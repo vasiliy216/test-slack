@@ -1,0 +1,22 @@
+.container{
+   padding: 15px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.input{
+text-align: left;
+margin-bottom: 20px;
+   }
+
+.avatar{
+   cursor: pointer;
+}
+.title{
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+  align-items: center;
+}
+ 

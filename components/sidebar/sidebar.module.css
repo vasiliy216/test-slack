@@ -1,0 +1,16 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.link {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+.crateChannelBtn {
+    margin-top: 10px;
+}

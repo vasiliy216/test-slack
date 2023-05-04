@@ -1,0 +1,91 @@
+/* auth */
+
+.auth_section {
+    width: 100%;
+    height: 100vh;
+}
+
+.auth_flex {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    margin: 0 auto;
+}
+
+.auth_body {
+    width: 370px;
+    padding: 20px;
+    border-radius: 0.375rem;
+    box-shadow: 3px 3px 18px #e5e5e5;
+}
+
+.auth_title {
+    font-weight: 500;
+    text-align: center;
+}
+
+.auth_body>p {
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.auth_pre_title {
+    margin-bottom: 2rem;
+}
+
+.text_danger {
+    display: flex;
+}
+
+.text_danger>li {
+    padding-left: 10px;
+    list-style-type: none;
+}
+
+.text_danger::before {
+    display: inline;
+    content: "⚠";
+}
+
+.auth_bottom {
+    font-size: 15px;
+    color: #335eea
+}
+
+.auth_bottom+.auth_bottom {
+    margin-top: 0.5rem;
+}
+
+.google {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.passCode {
+    display: flex;
+    align-items: center;
+}
+
+.passCode button {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.passCode_input {
+    pointer-events: none;
+}
+.generate{
+   width: 45%;
+   display: flex;
+   align-items: center;
+ justify-content: center;
+ margin-left: 10px;
+}
+@media only screen and (max-width: 360px) {
+    .auth_body {
+        width: auto;
+    }
+}

@@ -1,0 +1,63 @@
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;
+}
+
+.ant-card-body {
+  padding: 10px !important;
+}
+
+
+.ant-drawer-body{
+text-align: center;
+}
+
+
+.albumImagesWrap .ant-upload-list-item-container,
+.albumImagesWrap  .ant-upload-select
+{
+  width: 240px !important;
+  height: 240px !important;
+  margin: 10px !important;
+}
+
+.albumImagesWrap svg {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.albumImagesWrap .ant-upload-list-item button {
+margin-left: 20px;
+}
+.ant-dropdown-menu{
+  width: 200px !important; 
+}
+.uploadPhoto .ant-upload{
+width: 240px !important;
+height: 264px !important;
+background-color: white !important;
+border: none !important;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
+transition: 0.3s !important;
+border-radius: 10px !important
+}
+.ql-editor{
+  max-height: 100px !important;
+  overflow: auto!important;
+}

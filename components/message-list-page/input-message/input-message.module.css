@@ -1,0 +1,15 @@
+.sendIcon {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	cursor: pointer;
+}
+.wrapper {
+	position: relative;
+}
+.error{
+color:var(--text-danger)
+}
+.hiddenError{
+	visibility: hidden;
+}
