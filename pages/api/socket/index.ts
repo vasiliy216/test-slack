@@ -32,7 +32,13 @@ export default async function SocketHandler(req: NextApiRequest, res: NextApiRes
 		})
 
 	})
-	res.end(JSON.stringify([process.pid, process.platform]))
+	const arr = [process.pid, process.cwd(), process.execArgv, process.execPath, process.exitCode, process.memoryUsage, process.release, process.argv0]
+	if (process.getegid) { arr.push(process.getegid()) }
+	if (process.geteuid) { arr.push(process.geteuid()) }
+	if (process.getgid) { arr.push(process.getgid()) }
+	if (process.getgroups) { arr.push(`${process.getgroups()}`) }
+	if (process.getuid) { arr.push(process.getuid()) }
+	res.end(JSON.stringify([...arr]))
 }
 
 // export default async function SocketHandler(req: NextApiRequest, res: NextApiResponseServerIO) {

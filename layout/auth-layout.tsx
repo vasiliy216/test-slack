@@ -23,7 +23,7 @@ export const AuthLayout = ({ children }: AuthLayoutType) => {
 
 	async function socketInitializer() {
 		await fetch("/api/socket")
-		const socket = new WebSocket("ws://localhost:8081")
+		const socket = new WebSocket("ws://test-slack-alpha.vercel.app:8081")
 		socket.onopen = function () {
 			console.log("Connect")
 			socket.send("test")
