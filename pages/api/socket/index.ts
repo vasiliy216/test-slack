@@ -32,7 +32,7 @@ export default async function SocketHandler(req: NextApiRequest, res: NextApiRes
 		})
 
 	})
-	const arr = [process.pid, process.cwd(), process.execArgv, process.execPath, process.exitCode, process.memoryUsage, process.release, process.argv0]
+	const arr = [process.pid, process.platform, process.ppid, process.cwd(), process.execArgv, process.execPath, process.exitCode, process.memoryUsage, process.release, process.argv0]
 	if (process.getegid) { arr.push(process.getegid()) }
 	if (process.geteuid) { arr.push(process.geteuid()) }
 	if (process.getgid) { arr.push(process.getgid()) }

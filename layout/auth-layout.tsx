@@ -20,9 +20,7 @@ export const AuthLayout = ({ children }: AuthLayoutType) => {
 	const { id } = useAppSelector(s => s.circle)
 	const { pathname } = useRouter()
 	console.log("session", session)
-
-	async function socketInitializer() {
-		await fetch("/api/socket")
+	const connect = () => {
 		const socket = new WebSocket("ws://test-slack-alpha.vercel.app:8081")
 		socket.onopen = function () {
 			console.log("Connect")
@@ -31,6 +29,23 @@ export const AuthLayout = ({ children }: AuthLayoutType) => {
 		socket.onmessage = function (e) {
 			console.log(e, e.data)
 		}
+
+		socket.onclose = function (e) {
+			console.log("Socket is closed. Reconnect will be attempted in 1 second.", e.reason)
+			setTimeout(function () {
+				connect()
+			}, 1000)
+		}
+
+		socket.onerror = function (err) {
+			console.error("Socket encountered error: ", err, "Closing socket")
+			socket.close()
+		}
+	}
+
+	async function socketInitializer() {
+		await fetch("/api/socket")
+		connect()
 	}
 
 	useEffect(() => {
