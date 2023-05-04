@@ -19,7 +19,7 @@ export const AuthLayout = ({ children }: AuthLayoutType) => {
 	const { id } = useAppSelector(s => s.circle)
 	const { pathname } = useRouter()
 	const connect = () => {
-		const socket = new WebSocket("wss://test-slack-alpha.vercel.app:8081")
+		const socket = new WebSocket("wss://test-slack-alpha.vercel.app")
 		socket.onopen = function () {
 			console.log("Connect")
 			socket.send("test")

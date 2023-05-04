@@ -6,7 +6,7 @@ import { getUniqueId } from "utils/get-unique-id"
 import { NextApiResponseServerIO } from "types"
 
 const clients: any = {}
-const webSocketServer = new WebSocketServer({ port: 8081 })
+const webSocketServer = new WebSocketServer()
 
 export default async function SocketHandler(req: NextApiRequest, res: NextApiResponseServerIO) {
 	webSocketServer.on("connection", function (ws) {
