@@ -13,12 +13,10 @@ process.env.NEXTAUTH_URL = process.env.NODE_ENV === "production"
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 	return (
-		<SessionProvider session={session}>
-			<Provider store={store}>
-				<AuthLayout>
-					<Component {...pageProps} />
-				</AuthLayout>
-			</Provider>
-		</SessionProvider>
+		<Provider store={store}>
+			<AuthLayout>
+				<Component {...pageProps} />
+			</AuthLayout>
+		</Provider>
 	)
 }

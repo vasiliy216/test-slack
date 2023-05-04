@@ -16,10 +16,8 @@ let socket: WebSocket
 const ROUTE_AUTH = /album|chat|profile/
 
 export const AuthLayout = ({ children }: AuthLayoutType) => {
-	const { data: session, status } = useSession()
 	const { id } = useAppSelector(s => s.circle)
 	const { pathname } = useRouter()
-	console.log("session", session)
 	const connect = () => {
 		const socket = new WebSocket("wss://test-slack-alpha.vercel.app:8081")
 		socket.onopen = function () {
@@ -55,13 +53,5 @@ export const AuthLayout = ({ children }: AuthLayoutType) => {
 		// }
 	}, [])
 
-	useLoadUserInfo(session?.user?.email as string)
-
-	if (status === "unauthenticated" && ROUTE_AUTH.test(pathname)) {
-		Router.push("/login")
-		return <Loader />
-	} else if (status === "loading" || (!id && ROUTE_AUTH.test(pathname))) {
-		return <Loader />
-	}
 	return <div>{children}</div>
 }
