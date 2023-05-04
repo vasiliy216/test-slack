@@ -1,5 +1,5 @@
 import { NextApiRequest } from "next"
-import { createToken } from "api/token"
+import { createToken } from "api/tokens"
 import { createJwtToken } from "utils/create-jwt-token"
 import { sendMail } from "utils/send-email"
 

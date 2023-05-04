@@ -1,6 +1,6 @@
 import { NextApiRequest } from "next"
 import { getUser, updateUser } from "api/user"
-import { deleteToken } from "api/token"
+import { deleteToken } from "api/tokens"
 
 export const checkEmail = async (req: NextApiRequest, email?: string) => {
 	try {
