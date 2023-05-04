@@ -4,12 +4,14 @@ import { useRouter } from "next/router"
 import { useSession } from "next-auth/react"
 import { Loader } from "components/shared/loader"
 import { useLoadUserInfo } from "hooks/use-load-user-info"
-import { socket } from "utils/socket-io"
+// import { socket } from "utils/socket-io"
 import { useAppSelector } from "hooks/redux"
 
 type AuthLayoutType = {
 	children: ReactNode
 }
+
+let socket: WebSocket
 
 const ROUTE_AUTH = /album|chat|profile/
 
@@ -21,13 +23,21 @@ export const AuthLayout = ({ children }: AuthLayoutType) => {
 
 	async function socketInitializer() {
 		await fetch("/api/socket")
+		const socket = new WebSocket("ws://localhost:8081")
+		socket.onopen = function () {
+			console.log("Connect")
+			socket.send("test")
+		}
+		socket.onmessage = function (e) {
+			console.log(e, e.data)
+		}
 	}
 
 	useEffect(() => {
 		socketInitializer()
-		return () => {
-			socket.disconnect()
-		}
+		// return () => {
+		// 	socket
+		// }
 	}, [])
 
 	useLoadUserInfo(session?.user?.email as string)

@@ -8,7 +8,7 @@ import { ModalAlbum } from "components/modals/modal-album/modal-album"
 import styles from "./albums.module.css"
 import { useRouter } from "next/router"
 import { useAppSelector } from "hooks/redux"
-import { getSocket } from "utils/get-socket"
+// import { getSocket } from "utils/get-socket"
 import Scrollbars from "react-custom-scrollbars"
 
 export function Albums() {
@@ -25,25 +25,25 @@ export function Albums() {
 		dispatch(deleteAlbum(id))
 	}
 
-	useEffect(() => {
-		getSocket().on("updateAlbums", () => {
-			getSocket().emit("getAlbumsByCircleId", circleId)
-		})
-		getSocket().on("receiveAlbumsFromCirce", (albums: Album[]) => {
-			if (activeAlbum && albums.map(album => album.id).includes(activeAlbum.id)) {
-				dispatch(setActiveAlbum(albums.find(album => album.id === activeAlbum.id) as Album))
-			}
-			dispatch(setAlbums(albums))
-		}
-		)
-	}, [circleId, dispatch, activeAlbum])
+	// useEffect(() => {
+	// 	getSocket().on("updateAlbums", () => {
+	// 		getSocket().emit("getAlbumsByCircleId", circleId)
+	// 	})
+	// 	getSocket().on("receiveAlbumsFromCirce", (albums: Album[]) => {
+	// 		if (activeAlbum && albums.map(album => album.id).includes(activeAlbum.id)) {
+	// 			dispatch(setActiveAlbum(albums.find(album => album.id === activeAlbum.id) as Album))
+	// 		}
+	// 		dispatch(setAlbums(albums))
+	// 	}
+	// 	)
+	// }, [circleId, dispatch, activeAlbum])
 
-	useEffect(() => {
-		getSocket().emit("joinAlbumSpace")
-		return () => {
-			getSocket().emit("leaveAlbumSpace")
-		}
-	}, [])
+	// useEffect(() => {
+	// 	getSocket().emit("joinAlbumSpace")
+	// 	return () => {
+	// 		getSocket().emit("leaveAlbumSpace")
+	// 	}
+	// }, [])
 
 	return (
 		<Scrollbars >

@@ -1,6 +1,6 @@
 // import { DefaultEventsMap } from "@socket.io/component-emitter"
 // import { io, Socket } from "socket.io-client"
-import { socket } from "utils/socket-io"
+// import { socket } from "utils/socket-io"
 
 // let socket: Socket<DefaultEventsMap, DefaultEventsMap> | null = null
 
@@ -10,4 +10,4 @@ import { socket } from "utils/socket-io"
 // 	return socket
 // }
 
-export const getSocket = () => socket
+// export const getSocket = () => socket

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Album } from "types"
-import { getSocket } from "utils/get-socket"
+// import { getSocket } from "utils/get-socket"
 
 type InitialState = {
 	albums: Album[]
@@ -24,14 +24,14 @@ export const albumsSlice = createSlice({
 	initialState,
 	reducers: {
 		deleteAlbum: (state, action) => {
-			getSocket().emit("deleteAlbumById", action.payload)
+			// getSocket().emit("deleteAlbumById", action.payload)
 			state.albums = state.albums.filter(album => album.id !== action.payload)
 		},
 		setCreateAlbumModalOpen: (state, action) => {
 			state.createModalOpen = action.payload
 		},
 		addAlbum: (state, action: PayloadAction<Album>) => {
-			getSocket().emit("createAlbum", action.payload)
+			// getSocket().emit("createAlbum", action.payload)
 			state.albums = [...state.albums, action.payload]
 		},
 		setActiveAlbum: (state, action: PayloadAction<Album>) => {
@@ -49,7 +49,7 @@ export const albumsSlice = createSlice({
 			state.activeAlbum.photos = [state.activeAlbum.photos, action.payload.link]
 		},
 		updateAlbum: (state, action) => {
-			getSocket().emit("updateCurrentAlbum")
+			// getSocket().emit("updateCurrentAlbum")
 			state.albums = state.albums.map(album =>
 				album.id === action.payload.id ? action.payload : album
 			)

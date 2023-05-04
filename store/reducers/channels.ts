@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Channel } from "types"
-import { getSocket } from "utils/get-socket"
+// import { getSocket } from "utils/get-socket"
 
 
 type Channels = {
@@ -25,7 +25,7 @@ export const channelsSlice = createSlice({
 			state.channels = action.payload
 		},
 		addChannel: (state, action: PayloadAction<Channel>) => {
-			getSocket().emit("createChannel", action.payload)
+			// getSocket().emit("createChannel", action.payload)
 			state.channels = [...state.channels, action.payload]
 		},
 		setActiveChannel: (state, action) => {
@@ -41,7 +41,7 @@ export const channelsSlice = createSlice({
 		},
 		deleteChannel: (state, action) => {
 			const circleId = state.activeChannel?.circleId
-			getSocket().emit("deleteChannelById", { id: action.payload, circleId })
+			// getSocket().emit("deleteChannelById", { id: action.payload, circleId })
 			state.channels = state.channels.filter(channel => channel.id !== action.payload)
 		}
 	}

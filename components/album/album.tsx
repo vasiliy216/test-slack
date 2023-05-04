@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { Modal } from "antd"
-import { Album } from "types"
+import { Album as AlbumType } from "types"
 import { setAlbums, setActiveAlbum } from "store"
 import { useDispatch } from "react-redux"
 import { SvgIcons } from "components/svg-icons/svg-icons"
@@ -11,7 +11,7 @@ import { useAppSelector } from "hooks/redux"
 import { UploadPhoto } from "./upload-photo"
 import styles from "./album.module.css"
 import { updateCurrentAlbum } from "utils/update-current-album"
-import { getSocket } from "utils/get-socket"
+// import { getSocket } from "utils/get-socket"
 import Scrollbars from "react-custom-scrollbars"
 
 export function Album() {
@@ -30,25 +30,25 @@ export function Album() {
 		setLoading(false)
 	}
 
-	useEffect(() => {
-		getSocket().on("updateAlbums", () => {
-			getSocket().emit("getAlbumsByCircleId", circleId)
-		})
-		getSocket().on("receiveAlbumsFromCirce", (albums: Album[]) => {
-			if (activeAlbum && albums.map(album => album.id).includes(activeAlbum.id)) {
-				dispatch(setActiveAlbum(albums.find(album => album.id === activeAlbum.id) as Album))
-			}
-			dispatch(setAlbums(albums))
-		}
-		)
-	}, [circleId, dispatch, activeAlbum])
+	// useEffect(() => {
+	// 	getSocket().on("updateAlbums", () => {
+	// 		getSocket().emit("getAlbumsByCircleId", circleId)
+	// 	})
+	// 	getSocket().on("receiveAlbumsFromCirce", (albums: Album[]) => {
+	// 		if (activeAlbum && albums.map(album => album.id).includes(activeAlbum.id)) {
+	// 			dispatch(setActiveAlbum(albums.find(album => album.id === activeAlbum.id) as Album))
+	// 		}
+	// 		dispatch(setAlbums(albums))
+	// 	}
+	// 	)
+	// }, [circleId, dispatch, activeAlbum])
 
-	useEffect(() => {
-		getSocket().emit("joinAlbumSpace")
-		return () => {
-			getSocket().emit("leaveAlbumSpace")
-		}
-	}, [])
+	// useEffect(() => {
+	// 	getSocket().emit("joinAlbumSpace")
+	// 	return () => {
+	// 		getSocket().emit("leaveAlbumSpace")
+	// 	}
+	// }, [])
 
 	return (
 		<Scrollbars >

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Message } from "types"
-import { getSocket } from "utils/get-socket"
+// import { getSocket } from "utils/get-socket"
 
 type Chat = {
 	editing: boolean,
@@ -32,18 +32,18 @@ export const chatSlice = createSlice({
 			state.messages = action.payload
 		},
 		addMessages: (state, action: PayloadAction<Message>) => {
-			getSocket().emit("createMessage", action.payload)
+			// getSocket().emit("createMessage", action.payload)
 			state.messages = [...state.messages, action.payload]
 		},
 		updateMessages: (state, action: PayloadAction<Message>) => {
-			getSocket().emit("updateMessageById", action.payload)
+			// getSocket().emit("updateMessageById", action.payload)
 			const message = action.payload
 			const data = state.messages.findIndex((c) => c.id == message.id)
 			state.messages[data].text = message.text
 		},
 		deleteMessage: state => {
 			const { id, channelId } = state.activeMessage
-			getSocket().emit("deleteMessageById", { id, channelId })
+			// getSocket().emit("deleteMessageById", { id, channelId })
 			state.messages = state.messages.filter(chatItem => chatItem.id !== id)
 		},
 		setActiveMessage: (state, action) => {
